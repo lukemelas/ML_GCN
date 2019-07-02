@@ -1,0 +1,10 @@
+[dataset] read data/voc/files/VOC2007/classification_trainval.csv
+[dataset] VOC 2007 classification set=trainval number of classes=20  number of images=5011
+[dataset] read data/voc/files/VOC2007/classification_test.csv
+[dataset] VOC 2007 classification set=test number of classes=20  number of images=4952
+<torchvision.transforms.transforms.Compose object at 0x7fbe3bdf9128>
+=> loading checkpoint 'pretrained/voc_checkpoint.pth.tar'
+=> loaded checkpoint 'True' (epoch 45)
+Test: 	 Loss 0.0511	 mAP 94.011
+OP: 0.8725	OR: 0.9107	OF1: 0.8912	CP: 0.8602	CR: 0.8947	CF1: 0.8771
+OP_3: 0.8771	OR_3: 0.9077	OF1_3: 0.8922	CP_3: 0.8640	CR_3: 0.8907	CF1_3: 0.8771

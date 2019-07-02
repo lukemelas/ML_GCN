@@ -1,0 +1,7 @@
+__pycache__/
+data/voc/VOCdevkit
+data/voc/files
+pretrained/*.pth
+pretrained/*.pth.tar
+checkpoints/*.pth
+checkpoints/*.pth.tar

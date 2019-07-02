@@ -14,33 +14,9 @@ tqdm.monitor_interval = 0
 class Engine(object):
     def __init__(self, state={}):
         self.state = state
-        if self._state('use_gpu') is None:
-            self.state['use_gpu'] = torch.cuda.is_available()
-
-        if self._state('image_size') is None:
-            self.state['image_size'] = 224
-
-        if self._state('batch_size') is None:
-            self.state['batch_size'] = 64
-
-        if self._state('workers') is None:
-            self.state['workers'] = 25
-
-        if self._state('device_ids') is None:
-            self.state['device_ids'] = None
-
-        if self._state('evaluate') is None:
-            self.state['evaluate'] = False
-
-        if self._state('start_epoch') is None:
-            self.state['start_epoch'] = 0
-
-        if self._state('max_epochs') is None:
-            self.state['max_epochs'] = 90
-
-        if self._state('epoch_step') is None:
-            self.state['epoch_step'] = []
-
+        
+        self.state['use_gpu'] = self.state.get('use_gpu', torch.cuda.is_available()) 
+        
         # meters
         self.state['meter_loss'] = tnt.meter.AverageValueMeter()
         # time measure
@@ -77,7 +53,7 @@ class Engine(object):
     def on_end_batch(self, training, model, criterion, data_loader, optimizer=None, display=True):
 
         # record loss
-        self.state['loss_batch'] = self.state['loss'].data[0]
+        self.state['loss_batch'] = self.state['loss'].item()
         self.state['meter_loss'].add(self.state['loss_batch'])
 
         if display and self.state['print_freq'] != 0 and self.state['iteration'] % self.state['print_freq'] == 0:
